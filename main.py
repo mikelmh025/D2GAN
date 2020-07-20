@@ -101,7 +101,6 @@ for epoch in range(200):
         if ((i+1) % 200 == 0):
             print(i+1, "step")
             print(str(errG1.data) + " " + str(errG2.data*0.1))
-            print(str(errG1.data[0]) + " " + str(errG2.data[0]*0.1))
             fake = netG(fixed_noise)
             if use_cuda:
                 vutils.save_image(fake.cpu().data, '%s/fake_samples_epoch_%s.png' % ('result', str(epoch)+"_"+str(i+1)), normalize=True)
