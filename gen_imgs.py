@@ -32,4 +32,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     g = torch.load(args.path)
+    print('g',g)
     gen(g, args.num_samples)
