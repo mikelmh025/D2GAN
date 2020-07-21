@@ -7,6 +7,7 @@ import numpy as np
 import torch
 from torch.autograd import Variable
 from torchvision.utils import save_image
+import models
 
 parser = ArgumentParser()
 parser.add_argument('--path', type=str, help='Path to the generator')
@@ -30,7 +31,9 @@ def gen(g, num_samples=60000, latent_size=100, path="images"):
 
 if __name__ == '__main__':
     args = parser.parse_args()
+    g = models._netG()
+    g.load_state_dict(torch.load(args.path))
 
-    g = torch.load(args.path)
+    # g = torch.load(args.path)
     print('g',g)
     gen(g, args.num_samples)
