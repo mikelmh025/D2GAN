@@ -9,8 +9,8 @@ from torch.autograd import Variable
 from torchvision.utils import save_image
 
 parser = ArgumentParser()
-parser.add_argument('path', type=str, help='Path to the generator')
-parser.add_argument('num_samples', type=int, help='number of samples to generate')
+parser.add_argument('--path', type=str, help='Path to the generator')
+parser.add_argument('--num_samples', type=int, help='number of samples to generate')
 
 CUDA = True if torch.cuda.is_available() else False
 Tensor = torch.cuda.FloatTensor if CUDA else torch.FloatTensor
