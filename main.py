@@ -106,8 +106,8 @@ for epoch in range(200):
                 vutils.save_image(fake.cpu().data, '%s/fake_samples_epoch_%s.png' % ('result', str(epoch)+"_"+str(i+1)), normalize=True)
             else:
                 vutils.save_image(fake.data, '%s/fake_samples_epoch_%s.png' % ('result', str(epoch)+"_"+str(i+1)), normalize=True)
-        if ((i+1) % 2000 == 0):
-            torch.save(netG.state_dict(), '%s/netG%s.pth' % ('result', str(epoch)+"_"+str(i+1)) )
+    if (epoch % 5 == 0):
+        torch.save(netG.state_dict(), '%s/netG%s.pth' % ('result', str(epoch) ))
 
 
     print("%s epoch finished" % (str(epoch)))
