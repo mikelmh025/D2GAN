@@ -19,11 +19,11 @@ Tensor = torch.cuda.FloatTensor if CUDA else torch.FloatTensor
 
 def gen(g, num_samples=60000, latent_size=100, path="images"):
     os.makedirs(path, exist_ok=True)
-
+    fixed_noise = torch.FloatTensor(64, 100, 1, 1).normal_(0, 1)
+    fixed_noise = Variable(fixed_noise)
     for i in range(num_samples):
         # Sample noise as generator input
-        fixed_noise = torch.FloatTensor(64, 100, 1, 1).normal_(0, 1)
-        fixed_noise = Variable(fixed_noise)
+
         gen_imgs = g(fixed_noise)
 
         save_image(gen_imgs.data[0], os.path.join(path, f"{i}.png"), normalize=True)
