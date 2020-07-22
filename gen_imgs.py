@@ -22,13 +22,14 @@ def gen(g, num_samples=60000, latent_size=100, path="images"):
 
     for i in range(num_samples):
         # Sample noise as generator input
-        # if CUDA:
-        #     fixed_noise = torch.cuda.FloatTensor(64, 100, 1, 1).normal_(0, 1)
-        # else:
-        fixed_noise = torch.FloatTensor(64, 100, 1, 1).normal_(0, 1)
-        fixed_noise = Variable(fixed_noise)
         if CUDA:
+            fixed_noise = torch.cuda.FloatTensor(64, 100, 1, 1).normal_(0, 1)
+            fixed_noise = Variable(fixed_noise)
             fixed_noise.to(device)
+        else:
+            fixed_noise = torch.FloatTensor(64, 100, 1, 1).normal_(0, 1)
+            fixed_noise = Variable(fixed_noise)
+
 
         gen_imgs = g(fixed_noise)
 
